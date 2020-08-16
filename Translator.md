@@ -122,7 +122,7 @@ class ReadListLogs
         public function __construct()
         {
                 $this->filename="/etc/passwd";
-                $this->RowNumber = 10;
+                $this->RowNumber = 1;
         }
 }
 $obj = new ReadListLogs();
