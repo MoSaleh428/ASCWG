@@ -110,7 +110,7 @@ And the last portion of the code does the following:
 
   Ok let's take it step by step
 
-  ###1. serializing
+  ### 1. serializing
   
   Since the data is unserialized we need to supply serialize 
   
@@ -137,7 +137,7 @@ echo "\n";
   And we got serialized data..
 
 
-  ###2. encrypting
+  ### 2. encrypting
   
   Here was a great problem for me, I thought at first it depended on cryptography, but it seemed at last it's OSINT
   
@@ -183,7 +183,7 @@ echo encryptString($plaintext,$password);
 
 
 
-  ###3. injecting
+  ### 3. injecting
 
   The encrypted serialized payload:
 
