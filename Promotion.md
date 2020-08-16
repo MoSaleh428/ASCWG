@@ -1,7 +1,7 @@
   At the beginning the description of the challenge:
 
     "title": "promotion"
-    "level": 1 *it worthed more..*
+    "level": 1
     "description": "Find a way to promote yourself."
     "points": 300
     
