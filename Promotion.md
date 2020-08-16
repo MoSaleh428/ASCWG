@@ -38,10 +38,7 @@
   
   We didn't have the signature so We tried to bypass it with couple ways I'll try to mention them in brief
 
-  1. changing the algorithm value to "none" and role to "admin" removing the sigature part from jwt so It'll look like that
-  
-  ```eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiYWRtaW4ifQ.```
-  
+  1. changing the algorithm value to "none" and role to "admin" removing the sigature part from jwt so It'll look like that ```eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiYWRtaW4ifQ.```
   2. Brute force the signature secret key value
   
   None of them worked, I tried to look for any other bypass but found none
@@ -56,11 +53,8 @@
   I checked them all and here's what I got
   
   1. /.ssh/ and /vendors/ directories require authorization to access, I tried to bypass the authorization with removing the cookie or changing the request method but none worked
-  
   2. most of the files inside /vendor/ directory are empty or worthless
-  
   3. /login.php doesn't have any content before redirecting and seems to need an authorization to access too
-  
   4. The one only thing that got me interested is /composer.lock it had the name and version of the software encrypting and decrypting the jwt token
   
   ![image 5](https://imgur.com/Gegmp78.png)
@@ -112,9 +106,7 @@
   But to bypass this filter there's some points to take in consideration
   
   1. the filter uses preg_replace() to remove specified strings
-  
   2. the space can be replaced with tab which we'll write as %09
-  
   3. the multi character strings can be bypassed by spliting them by itself other string that's going to be removed after it eg. (admadminin, passwo-rd)
 
 
