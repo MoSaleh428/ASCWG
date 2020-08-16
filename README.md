@@ -9,6 +9,6 @@ Team members:
   - Abanob Medhat
   - Waleed Negm
 
-![image 1](https://imgur.com/undefined)
+![image 1](https://imgur.com/7Zksa6v.png)
 
 Enjoy the write-ups :D
