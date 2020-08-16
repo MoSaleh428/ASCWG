@@ -89,22 +89,26 @@ unserialize($DecryptVal);
 
 ?>
 ```
-  Taking a look at the file there's at first
-1. Unreaveled encryption function that takes plain text and key
-2. Revealed decrypting function that takes cipher text and key
-3. A sample of the encrypting
+  Taking a look at what the code do
+  1. Unreaveled encryption function that takes plain text and key
+  2. Revealed decrypting function that takes cipher text and key
+  3. A sample of the encrypting
+  
   After them there's a class which contains:
-1. Two variables $FileName and $RowNumber
-2. __construct and __wakeup php magic methods, these are method that run without calling them when some action happens you can read about them ![here](https://www.php.net/manual/en/language.oop5.magic.php)
-3. A function to read files and store the output in file with random name in logs directory
-4. Echoes the file name
-And the last portion of the code does the following:
-1. Gets the data from the request
-2. Decode the json formatted data
-3. Store the data to variable named $data
-4. Decrypting the parameter user in variable data with the decrypting function
-5. Storing the decrypted cipher to a variable named $DecryptVal
-6. Unserializing $DecryptVal
+  
+  1. Two variables $FileName and $RowNumber
+  2. __construct and __wakeup php magic methods, these are method that run without calling them when some action happens you can read about them ![here}(https://www.php.net/manual/en/language.oop5.magic.php)
+  3. A function to read files and store the output in file with random name in logs directory
+  4. Echoes the file name
+
+  And the last portion of the code does the following:
+
+  1. Gets the data from the request
+  2. Decode the json formatted data
+  3. Store the data to variable named $data
+  4. Decrypting the parameter user in variable data with the decrypting function
+  5. Storing the decrypted cipher to a variable named $DecryptVal
+  6. Unserializing $DecryptVal
 
   It's clear since the code has magic methods and unserializing user data that it'll be php insecure deserialization ( aka php object injection )
 
@@ -134,7 +138,7 @@ echo "\n";
   
   ```O:12:"O:12:"ReadListLogs":2:{s:8:"FileName";s:11:"/etc/passwd";s:9:"RowNumber";i:1;}```
   
-  And we got serialized data..
+  And we got the serialized payload..
 
 
   ### 2. encrypting
