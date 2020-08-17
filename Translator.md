@@ -121,7 +121,7 @@ unserialize($DecryptVal);
 
   Ok let's take it step by step.
 
-  ### 1. serializing
+  ### 1. Serializing
   
   Since the data is unserialized we need to supply serialize .
   
@@ -148,7 +148,7 @@ echo "\n";
   And we got the serialized payload..
 
 
-  ### 2. encrypting
+  ### 2. Encrypting
   
   Here was a great problem for me, I thought at first it depended on cryptography, but it seemed at last it's OSINT.
   
@@ -194,7 +194,7 @@ echo encryptString($plaintext,$password);
 
 
 
-  ### 3. injecting
+  ### 3. Injecting
 
   The encrypted serialized payload:
 
