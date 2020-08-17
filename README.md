@@ -47,7 +47,9 @@ Enjoy the write-ups :D
 
   Here's something to look at, I found a **jwt token** in cookies
   
-  ```auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoidXNlciJ9.j4ufWJ8PebEKIi5R7HSxu4s0cxucJYQivWfuQJ0ijTY```
+  ```
+  auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoidXNlciJ9.j4ufWJ8PebEKIi5R7HSxu4s0cxucJYQivWfuQJ0ijTY
+  ```
 
   Let's see what it hiddes using [https://jwt.io/](https://jwt.io/)
 
