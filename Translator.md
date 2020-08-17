@@ -1,29 +1,33 @@
-The challenge description:
+# Translator
+
+## Description
 
     "title": "Translator"
     "level": 2
     "description": "The only way to patch a vulnerability is by exposing it first so, Will you can Translator ?."
     "points": 600
     
-  I went to [the website](http://35.222.121.58/Translator/), made directory brute force scan, Checked the source code.. nothing seems to be important..
+## Enumeration
+
+  I went to the website and made directory brute force scan, Checked the source code.. nothing seems to be important.
   
   I checked the request and response, but still nothing important
   
-  I returned to see what the directory brute force found and it got two files that shined with some hope to find something important
+  I returned to see what the directory brute force found and it got **two paths that** shined with some hope to find something important.
   
   ![image 1](https://imgur.com/uDx6SiR.png)
 
   
   Both directories gave 403 unauthorized response
   
-  At least maybe another brute force on them could reveal something.. and yes it did
+  At least maybe another brute force on them could reveal something.. and yes it did.
   
-  We found a zip file inside backup directory
+  We found a zip file inside backup directory.
   
   ![image 2](https://imgur.com/XBev9nz.png)
 
   
-  Downloaded the file and tried to unzip it but it requires password, peace of cake
+  Downloaded the file and tried to unzip it but it requires password, peace of cake.
   
   Running a small program to brute force the password was enough
   
@@ -34,7 +38,7 @@ The challenge description:
   The password: ```kaylaanne```
 
   
-  Unzipped the file and it contained the source code of the index.php page
+  Unzipped the file and it contained the source code of the index.php page.
 
 ```
 <?php
@@ -89,17 +93,18 @@ unserialize($DecryptVal);
 
 ?>
 ```
-  Taking a look at what the code do
-  1. Unreaveled encryption function that takes plain text and key
-  2. Revealed decrypting function that takes cipher text and key
-  3. A sample of the encrypting
+  Taking a look at what the code do:
+  
+  - Unreaveled encryption function that takes plain text and key
+  - Revealed decrypting function that takes cipher text and key
+  - A sample of the encrypting
   
   After them there's a class which contains:
   
-  1. Two variables $FileName and $RowNumber
-  2. __construct and __wakeup php magic methods, these are method that run without calling them when some action happens you can read about them ![here}(https://www.php.net/manual/en/language.oop5.magic.php)
-  3. A function to read files and store the output in file with random name in logs directory
-  4. Echoes the file name
+  - Two variables $FileName and $RowNumber
+  - __construct and __wakeup php magic methods, these are method that run without calling them when some action happens you can read about them ![here}(https://www.php.net/manual/en/language.oop5.magic.php)
+  - A function to read files and store the output in file with random name in logs directory
+  - Echoes the file name
 
   And the last portion of the code does the following:
 
@@ -110,15 +115,17 @@ unserialize($DecryptVal);
   5. Storing the decrypted cipher to a variable named $DecryptVal
   6. Unserializing $DecryptVal
 
-  It's clear since the code has magic methods and unserializing user data that it'll be php insecure deserialization ( aka php object injection )
+## Exploitation
 
-  Ok let's take it step by step
+  It's clear since the code has magic methods and unserializing user data that it'll be php insecure deserialization ( aka php object injection ).
+
+  Ok let's take it step by step.
 
   ### 1. serializing
   
-  Since the data is unserialized we need to supply serialize 
+  Since the data is unserialized we need to supply serialize .
   
-  I made a small php script to serialize the data and make object of the same class with the same variables but changing thier values
+  I made a small php script to serialize the data and make object of the same class with the same variables but changing thier values.
 ```
 <?php
 class ReadListLogs
@@ -143,11 +150,11 @@ echo "\n";
 
   ### 2. encrypting
   
-  Here was a great problem for me, I thought at first it depended on cryptography, but it seemed at last it's OSINT
+  Here was a great problem for me, I thought at first it depended on cryptography, but it seemed at last it's OSINT.
   
   I searched for a long time for the algorithm until I finally found it [here](https://stackoverflow.com/questions/3422759/php-aes-encrypt-decrypt/56856924#answer-62175221)
   
-  Ok now I have the encryption algorithm
+  Ok now I have the encryption algorithm.
 
 ```
 function encryptString($plaintext, $password) {
@@ -158,7 +165,7 @@ function encryptString($plaintext, $password) {
 }
 ```
 
-  I modified it a bit so I can use it in a local web server
+  I modified it a bit so I can use it in a local web server.
 ```
 <?php
 
@@ -179,11 +186,11 @@ echo encryptString($plaintext,$password);
 ```
   ![image 5](https://imgur.com/f2fU0IL.png)
 
-  Also try to decrypt it locally with some reflective data added
+  Also try to decrypt it locally with some reflective data added.
 
   ![image 6](https://imgur.com/tr3ZaEg.png)
 
-  Encrypting done
+  Encrypting done.
 
 
 
@@ -193,7 +200,7 @@ echo encryptString($plaintext,$password);
 
   ```NB8zli9U94QIB9lOosT0vaPVSakMB8vc7QTXEmJ4e9x9g4ah84ImLkFSdW1zHba5EEQvLzTNYXHkQocwb7ejsTTnEOU5maOkPW2fnMz6o2LPQZrnxe3rhh5A8Wh2g6pwqC6Nq7ZODfPPdMmfaTVMVh+iklUFeteJL9VOW27yLik=```
 
-  Injecting it into the challenge
+  Injecting it into the challenge.
   
   ![image 7](https://imgur.com/6y5ikh0.png)
 
