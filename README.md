@@ -125,7 +125,7 @@ Enjoy the write-ups :D
   
   - the filter uses preg_replace() to remove specified strings.
   - the space can be replaced with tab which we'll write as %09.
-  - the multi character strings can be bypassed by spliting them by itself or other string that's going to be removed after it eg. (admadminin, passwo-rd).
+  - the multi character strings can be bypassed by spliting them by itself or other string that's going to be removed after it e.g. (admadminin, passwo-rd).
 
 
   First I tried to bypass the login and using this payload ```adm-in')%09o-r%091=1#```
