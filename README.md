@@ -392,7 +392,7 @@ echo encryptString($plaintext,$password);
 
   ![image 8](https://imgur.com/lhpz84I.png)
 
-  Going to [the file](http://35.222.121.58/Translator/logs/31771b107da808662fa1.txt)
+  Going to the file.
 
   ![https://imgur.com/beS5w18.png](https://imgur.com/beS5w18.png)
 
