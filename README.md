@@ -398,6 +398,9 @@ echo encryptString($plaintext,$password);
 
   And we got the flag: ```#ASCWG{php_1$_R3a11y_C0Ol_1$_not_1t_?x?:P_1xcxz}```
 
+  Note: I kept on increasing RowNumber value till I reached the line of the flag
+
+
 
   Big credits to my teammate Abanob Medhat who participated with me in solving this challenge
 
