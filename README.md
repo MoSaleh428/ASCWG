@@ -215,7 +215,7 @@ Enjoy the write-ups :D
   
   Running a small program to brute force the password was enough
   
-  ```fcrackzip -v -u -D -p backup.zip rockyou.txt```
+  ```fcrackzip -v -u -D -p rockyou.txt backup.zip```
   
   ![image 3](https://imgur.com/PtpMSmw.png)
   
